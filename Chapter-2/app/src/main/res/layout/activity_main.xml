@@ -7,12 +7,112 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins"
+        android:text="Calculate Tip"
+        android:textColor="#616161"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="How was the service?"
+        app:layout_constraintEnd_toEndOf="@+id/et_cost"
+        app:layout_constraintStart_toStartOf="@+id/et_cost"
+        app:layout_constraintTop_toBottomOf="@+id/et_cost" />
+
+    <Button
+        android:id="@+id/btn_calculate"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/button_corner_radius"
+        android:backgroundTint="@null"
+        android:text="Calculate"
+        app:layout_constraintEnd_toEndOf="@+id/rg_service_category"
+        app:layout_constraintStart_toStartOf="@+id/rg_service_category"
+        app:layout_constraintTop_toBottomOf="@+id/rg_service_category" />
+
+    <RadioGroup
+        android:id="@+id/rg_service_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_question"
+        app:layout_constraintStart_toStartOf="@+id/tv_question"
+        app:layout_constraintTop_toBottomOf="@+id/tv_question">
+
+        <RadioButton
+            android:id="@+id/rb_amazing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amazing (20%)" />
+
+        <RadioButton
+            android:id="@+id/rb_good"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Good (18%)" />
+
+        <RadioButton
+            android:id="@+id/rb_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OK (15%)" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        android:text="Round up tip?"
+        app:layout_constraintBottom_toTopOf="@+id/btn_calculate"
+        app:layout_constraintStart_toStartOf="@+id/btn_calculate" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_calculate"
+        app:layout_constraintEnd_toEndOf="@+id/btn_calculate" />
+
+    <EditText
+        android:id="@+id/et_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="Cost of  Service"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Tip: $0"
+        android:textColor="#616161"
+        android:textSize="44sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btn_calculate"
+        app:layout_constraintStart_toStartOf="@+id/btn_calculate"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calculate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
