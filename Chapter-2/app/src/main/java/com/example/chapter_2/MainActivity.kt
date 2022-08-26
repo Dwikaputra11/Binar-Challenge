@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioGroup
 import com.example.chapter_2.databinding.ActivityMainBinding
+import kotlin.math.ceil
+import kotlin.math.floor
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
             var result:Double = costService*percent/100
             if(binding.switch1.isChecked){
-                binding.tvResult.text = mes + result.toInt().toString()
+                binding.tvResult.text = mes + ceil(result).toInt().toString()
             }else{
                 binding.tvResult.text = mes + result.toString()
             }
