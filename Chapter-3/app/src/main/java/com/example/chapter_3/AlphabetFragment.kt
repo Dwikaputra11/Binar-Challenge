@@ -28,14 +28,14 @@ class AlphabetFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        fabAddWord.setOnClickListener{
+            val addWordBottomSheetFragment = AddWordBottomSheetFragment()
+            addWordBottomSheetFragment.show(parentFragmentManager.beginTransaction(),addWordBottomSheetFragment.tag)
+        }
+
         val alphabetListAdapter = AlphabetListAdapter(DummyData.listAlphabet)
-
-
         rvAlphabetList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rvAlphabetList.adapter = alphabetListAdapter
-
-
-
         alphabetListAdapter.setOnItemClickListener(object : AlphabetListAdapter.onItemClickListener{
             override fun onItemClick(word: String) {
                 loadFragment(AlphabetWordFragment(word))
