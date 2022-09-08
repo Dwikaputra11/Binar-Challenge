@@ -33,10 +33,6 @@ class AlphabetFragment : Fragment() {
             addWordBottomSheetFragment.show(parentFragmentManager.beginTransaction(),addWordBottomSheetFragment.tag)
         }
 
-        val alphabetListAdapter = AlphabetListAdapter(DummyData.listAlphabet)
-
-
-
         rvAlphabetList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rvAlphabetList.adapter = adapter
         adapter.setOnItemClickListener(object : AlphabetListAdapter.onItemClickListener{
