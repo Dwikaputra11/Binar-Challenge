@@ -21,18 +21,16 @@ class AlphabetListAdapter(private val listAlphabet: ArrayList<String>) :
 
     private lateinit var listener: onItemClickListener
     interface onItemClickListener{
-        fun onItemClick(position: Int)
+        fun onItemClick(word: String)
     }
 
     fun setOnItemClickListener(listener: onItemClickListener){
         this.listener = listener
     }
 
-    class ViewHolder(itemView: View,  listener: onItemClickListener): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View,  listener: onItemClickListener, listAlphabet: ArrayList<String>): RecyclerView.ViewHolder(itemView) {
         val character: TextView = itemView.tvChar
         val wordPreview = itemView.rvWordPreview
-
-
 
         fun bind(wordPreviewList: ArrayList<Word>){
             val wordPreviewAdapter = AlphabetWordPreviewAdapter(wordPreviewList)
@@ -49,7 +47,7 @@ class AlphabetListAdapter(private val listAlphabet: ArrayList<String>) :
 
         init {
             itemView.tvViewAll.setOnClickListener{
-                listener.onItemClick(absoluteAdapterPosition)
+                listener.onItemClick(listAlphabet[absoluteAdapterPosition])
             }
         }
     }
@@ -57,7 +55,7 @@ class AlphabetListAdapter(private val listAlphabet: ArrayList<String>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.alphabet_list, parent, false)
-        return ViewHolder(view, listener)
+        return ViewHolder(view, listener, listAlphabet)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
