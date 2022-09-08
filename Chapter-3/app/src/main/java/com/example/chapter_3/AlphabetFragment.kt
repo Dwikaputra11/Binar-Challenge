@@ -37,8 +37,8 @@ class AlphabetFragment : Fragment() {
 
 
         alphabetListAdapter.setOnItemClickListener(object : AlphabetListAdapter.onItemClickListener{
-            override fun onItemClick(position: Int) {
-                loadFragment(AlphabetWordFragment())
+            override fun onItemClick(word: String) {
+                loadFragment(AlphabetWordFragment(word))
             }
         })
 

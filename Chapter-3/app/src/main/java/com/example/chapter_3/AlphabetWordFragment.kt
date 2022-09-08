@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chapter_3.adapter.AlphabetWordAdapter
 import com.example.chapter_3.data.DummyData
+import com.example.chapter_3.model.Word
 import kotlinx.android.synthetic.main.fragment_alphabet_word.*
 
-class AlphabetWordFragment : Fragment() {
+class AlphabetWordFragment(private val keyWord :String) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +26,9 @@ class AlphabetWordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val adapter = AlphabetWordAdapter(DummyData.listWordPreview)
+        val adapter = AlphabetWordAdapter(DummyData.listWordPreview.filter {
+            it.word.first().toString().uppercase() == keyWord
+        } as ArrayList<Word>)
         rvAlphabetWord.layoutManager = GridLayoutManager(context,3, GridLayoutManager.VERTICAL, false)
         rvAlphabetWord.adapter = adapter
         adapter.setOnItemClickListener(object : AlphabetWordAdapter.OnItemClickListener{
