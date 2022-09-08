@@ -1,24 +1,21 @@
 package com.example.chapter_3
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chapter_3.adapter.AlphabetListAdapter
+import com.example.chapter_3.adapter.AlphabetWordPreviewAdapter
+import com.example.chapter_3.data.DummyData
+import com.example.chapter_3.model.Word
+import kotlinx.android.synthetic.main.alphabet_list.*
 import kotlinx.android.synthetic.main.fragment_alphabet.*
 
 class AlphabetFragment : Fragment() {
-    private val listAlphabet  = arrayListOf<String>(
-        "A","B","C","D","E","F","G","H","I","J",
-        "K","L","M","N","O","P","R","S","T","U",
-        "V","W","X","Y","Z"
-    )
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,6 +26,13 @@ class AlphabetFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val adapter = AlphabetListAdapter(listAlphabet)
+
+        val alphabetListAdapter = AlphabetListAdapter(DummyData.listAlphabet)
+
+
+        rvAlphabetList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        rvAlphabetList.adapter = alphabetListAdapter
+
 
         rvAlphabetList.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
         rvAlphabetList.adapter = adapter

@@ -3,12 +3,14 @@ package com.example.chapter_3.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chapter_3.R
+import com.example.chapter_3.model.Word
 import kotlinx.android.synthetic.main.alphabet_word.view.*
 
-class AlphabetWordAdapter(val listWord: ArrayList<String>):
+class AlphabetWordAdapter(val listWord: ArrayList<Word>):
     RecyclerView.Adapter<AlphabetWordAdapter.ViewHolder>() {
 
     private lateinit var listener: OnItemClickListener
@@ -19,13 +21,14 @@ class AlphabetWordAdapter(val listWord: ArrayList<String>):
     fun setOnItemClickListener(listener: OnItemClickListener){
         this.listener = listener
     }
-    class ViewHolder(itemView: View,listener: OnItemClickListener, wordList: ArrayList<String>): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View,listener: OnItemClickListener, wordList: ArrayList<Word>): RecyclerView.ViewHolder(itemView) {
         init {
             itemView.setOnClickListener{
-                listener.onItemClick(wordList[absoluteAdapterPosition])
+                listener.onItemClick(wordList[absoluteAdapterPosition].word)
             }
         }
         val word: TextView = itemView.findViewById<TextView>(R.id.tvWord)
+        val image: ImageView = itemView.ivWord
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,7 +38,8 @@ class AlphabetWordAdapter(val listWord: ArrayList<String>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.word.text = listWord[position]
+        holder.word.text = listWord[position].word
+        holder.image.setImageResource(listWord[position].image)
     }
 
     override fun getItemCount(): Int {
