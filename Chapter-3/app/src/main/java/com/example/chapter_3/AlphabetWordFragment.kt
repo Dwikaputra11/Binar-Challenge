@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chapter_3.adapter.AlphabetWordAdapter
 import kotlinx.android.synthetic.main.fragment_alphabet_word.*
 
-class AlphabetWordFragment : Fragment() {
+class AlphabetWordFragment() : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,10 +23,13 @@ class AlphabetWordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val word = arrayListOf<String>(
-            "Anu", "Ngadan", "Kalo", "Miso", "Andar"
+            "Anu", "Ngadan", "Kalo", "Miso", "Andar", "Anjas", "Budi", "Banu", "Bakar"
         )
 
-        val adapter = AlphabetWordAdapter(word)
+        val keyWord = arguments?.getString("key_word")
+        val adapter = AlphabetWordAdapter(word.filter {
+            it.first().toString().uppercase() == keyWord
+        } as ArrayList<String>)
         rvAlphabetWord.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rvAlphabetWord.adapter = adapter
         adapter.setOnItemClickListener(object : AlphabetWordAdapter.OnItemClickListener{

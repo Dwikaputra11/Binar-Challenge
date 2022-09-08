@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/alphabetFragment">
+
+    <fragment
+        android:id="@+id/alphabetFragment"
+        android:name="com.example.chapter_3.AlphabetFragment"
+        android:label="fragment_alphabet"
+        tools:layout="@layout/fragment_alphabet" >
+        <action
+            android:id="@+id/action_alphabetFragment_to_alphabetWordFragment"
+            app:destination="@id/alphabetWordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/alphabetWordFragment"
+        android:name="com.example.chapter_3.AlphabetWordFragment"
+        android:label="fragment_alphabet_word"
+        tools:layout="@layout/fragment_alphabet_word" />
+</navigation>
