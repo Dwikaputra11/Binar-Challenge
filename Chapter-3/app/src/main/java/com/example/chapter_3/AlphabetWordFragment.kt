@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chapter_3.adapter.AlphabetWordAdapter
@@ -16,7 +17,7 @@ import com.example.chapter_3.model.Word
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_alphabet_word.*
 
-class AlphabetWordFragment(private val keyWord :String) : Fragment() {
+class AlphabetWordFragment() : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,21 +28,20 @@ class AlphabetWordFragment(private val keyWord :String) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        val keyWord = arguments?.getString("key_word")
         (activity as MainActivity).supportActionBar?.title = "Words That Start With $keyWord"
 
         // show back button on toolbar
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
         (activity as MainActivity).toolbar.setNavigationOnClickListener {
-            (activity as MainActivity).supportFragmentManager.popBackStack()
+            Navigation.findNavController(view).navigate(R.id.action_alphabetWordFragment_to_alphabetFragment)
         }
         // change floating button visibility
         (activity as MainActivity).fabAddWord.visibility = View.GONE
 
         // filter word by selected alphabet
         val adapter = AlphabetWordAdapter(DummyData.listWord.filter {
-        val keyWord = arguments?.getString("key_word")
-        val adapter = AlphabetWordAdapter(DummyData.listWordPreview.filter {
             it.word.first().toString().uppercase() == keyWord
         } as ArrayList<Word>)
 

@@ -18,5 +18,9 @@
         android:id="@+id/alphabetWordFragment"
         android:name="com.example.chapter_3.AlphabetWordFragment"
         android:label="fragment_alphabet_word"
-        tools:layout="@layout/fragment_alphabet_word" />
+        tools:layout="@layout/fragment_alphabet_word" >
+        <action
+            android:id="@+id/action_alphabetWordFragment_to_alphabetFragment"
+            app:destination="@id/alphabetFragment" />
+    </fragment>
 </navigation>

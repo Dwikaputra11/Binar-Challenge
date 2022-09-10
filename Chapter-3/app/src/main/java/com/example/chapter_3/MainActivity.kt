@@ -17,11 +17,6 @@ class MainActivity : AppCompatActivity() {
         // show back button on toolbar
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         supportActionBar?.setDisplayShowHomeEnabled(false)
-        // make alphabet fragment to appear first
-        supportFragmentManager.beginTransaction().apply {
-            replace(frContainer.id, AlphabetFragment())
-            commit()
-        }
         // show bottom sheet fragment
         fabAddWord.setOnClickListener{
             val addWordBottomSheetFragment = AddWordBottomSheetFragment()

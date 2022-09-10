@@ -40,13 +40,5 @@ class AlphabetFragment : Fragment() {
                 Navigation.findNavController(view).navigate(R.id.action_alphabetFragment_to_alphabetWordFragment, bundle)
             }
         })
-
-    }
-
-    private fun loadFragment(fragment: Fragment){
-        val transaction = activity?.supportFragmentManager?.beginTransaction()
-        transaction?.replace(R.id.frContainer, fragment)
-        transaction?.addToBackStack(null)
-        transaction?.commit()
     }
 }
