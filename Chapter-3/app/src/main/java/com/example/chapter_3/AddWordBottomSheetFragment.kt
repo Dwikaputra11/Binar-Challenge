@@ -12,6 +12,7 @@ import com.example.chapter_3.model.Word
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_add_word_bottom_sheet.*
 import kotlinx.android.synthetic.main.fragment_add_word_bottom_sheet.view.*
+import kotlin.random.Random as Random
 
 class AddWordBottomSheetFragment : BottomSheetDialogFragment() {
 
@@ -24,10 +25,12 @@ class AddWordBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
         btnAddWord.setOnClickListener{
             val word = etAddWord.text.toString()
             if(word.isNotBlank()){
-                DummyData.listWordPreview.add(Word(word,R.drawable.ic_launcher_background))
+                DummyData.listWord.add(Word(word,DummyData.images[(0..4).random()]))
                 dismiss()
                 Toast.makeText(context,"Word Added",Toast.LENGTH_SHORT).show()
             }else{
