@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/poppins"
-        android:text="Calculate Tip"
+        android:text="@string/calculate_tip"
         android:textColor="@color/white"
         android:textSize="34sp"
         android:textStyle="bold"

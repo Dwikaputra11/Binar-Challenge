@@ -21,14 +21,14 @@
             />
         <TextView
             android:id="@+id/tvWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivWord"
             android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:text="A"
-            android:gravity="center_horizontal"
-            android:textSize="16sp"
             android:textColor="@color/black"
-            />
+            android:layout_gravity="center_horizontal"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
